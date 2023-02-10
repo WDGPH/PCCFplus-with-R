@@ -13,7 +13,7 @@ library(magrittr)
 extract_dte = function(x, i, j) {
   str_sub(x, i, j) %>%
     str_squish %>%
-    as.Date(format = '%Y%m%d')
+    suppressWarnings(as.Date(., format = '%Y%m%d'))
 }
 
 extract_txt = function(x, i, j) {
@@ -25,7 +25,7 @@ extract_txt = function(x, i, j) {
 extract_num = function(x, i, j) {
   str_sub(x, i, j) %>%
     str_squish %>%
-    as.numeric
+    suppressWarnings(as.numeric(.))
 }
 
 

@@ -16,7 +16,7 @@ source("meta/data_dictionary.R")
 # Function for generating data extraction code using data dictionary
 source("meta/code_gen.R")
 
-# Generate "PCCF_txt_to_csv.R"
+# Generate "txt_to_csv.R"
 # Header and common code
 cat(
   "# Code to convert PCCF+ txt files to csv",
@@ -34,7 +34,7 @@ cat(
   "extract_dte = function(x, i, j) {",
   "  str_sub(x, i, j) %>%",
   "    str_squish %>%",
-  "    as.Date(format = '%Y%m%d')",
+  "    suppressWarnings(as.Date(., format = '%Y%m%d'))",
   "}",
   "",
   "extract_txt = function(x, i, j) {",
@@ -46,20 +46,20 @@ cat(
   "extract_num = function(x, i, j) {",
   "  str_sub(x, i, j) %>%",
   "    str_squish %>%",
-  "    as.numeric",
+  "    suppressWarnings(as.numeric(.))",
   "}",
   "",
   "",
-  sep = "\n", file = "PCCF_txt_to_csv.R", append = F)
+  sep = "\n", file = "txt_to_csv.R", append = F)
 
 # File-specific generated code
-iwalk(data_dictionary, extraction_code_gen, output = "PCCF_txt_to_csv.R", append = T)
+iwalk(data_dictionary, extraction_code_gen, output = "txt_to_csv.R", append = T)
 
 # Clean up
 cat(
   "# Clean up",
   "rm(extract_txt, extract_num)",
-  sep = "\n", file = "PCCF_txt_to_csv.R", append = T)
+  sep = "\n", file = "txt_to_csv.R", append = T)
 
 
 # Clean up

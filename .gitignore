@@ -43,3 +43,6 @@ data/txt/*.txt
 
 # PCCF+ data files - csv converted format
 data/csv/*.csv
+
+# Output from PCCF+ 7E regional subset.csv
+data/*.csv
