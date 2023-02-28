@@ -37,3 +37,12 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# PCCF+ data files - original txt format
+data/txt/*.txt
+
+# PCCF+ data files - csv converted format
+data/csv/*.csv
+
+# Output from PCCF+ 7E regional subset.csv
+data/*.csv
